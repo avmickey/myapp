@@ -1,0 +1,55 @@
+@import 'src/style/variable.scss';
+
+p {
+  margin: 0;
+  padding: 0;
+  font-weight: 18px;
+  font-weight: 400;
+  font-family: var(--fontFamilyTwo);
+  color: var(--grayold);
+}
+
+p.b {
+  font-weight: 18px;
+}
+
+p.l {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+p.m {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: innerit;
+  font-weight: 400;
+  font-family: var(--fontFamilyTwo);
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+}
+
+@media screen and (max-width: $mw5 + px) {
+  p.m {
+    font-size: 14px;
+    font-weight: 400;
+  }
+  p.l {
+    font-size: 12px;
+  }
+  h2 {
+    font-size: 20px;
+  }
+}

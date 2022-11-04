@@ -1,0 +1,72 @@
+@import 'src/style/variable.scss';
+
+.signbody {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.signbody.load:before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background-image: url('../../../../../../img/Loading/loading.gif');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 50px 50px;
+}
+
+.signbody__btn {
+  width: 100px;
+  height: 100%;
+  z-index: 5;
+}
+
+.signbody__footer {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding-top: 20px;
+  align-items: center;
+}
+
+.signbody__wrap {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  p {
+    line-height: 16px;
+  }
+}
+
+.signbody__arrow {
+  width: 10px;
+  height: 10px;
+  margin-right: 5px;
+  transform: rotate(180deg);
+  display: flex;
+  align-items: center;
+  svg {
+    width: 100%;
+    height: 100%;
+    fill: var(--grayold);
+  }
+}
+
+@media screen and (max-width: $mw5 + px) {
+  .signbody__footer {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .signbody__btn {
+    padding-top: 0;
+  }
+}

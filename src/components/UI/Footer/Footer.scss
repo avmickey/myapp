@@ -1,0 +1,44 @@
+@import 'src/style/variable.scss';
+
+.footer {
+  padding: 30px 0;
+  color: #a2a2a2;
+  display: flex;
+  justify-content: center;
+  &__wrap {
+    width: 50%;
+    display: grid;
+    grid-template-columns: repeat(6, auto);
+    grid-template-rows: 1fr;
+    p {
+      display: inline-block;
+      cursor: pointer;
+      color: var(--gray);
+      &:hover {
+        color: var(--grayold);
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $mw2 + px) {
+  .footer {
+    &__wrap {
+      width: 80%;
+    }
+  }
+}
+@media screen and (max-width: $mw3 + px) {
+  .footer {
+    &__wrap {
+      width: 100%;
+    }
+  }
+}
+@media screen and (max-width: $mw5 + px) {
+  .footer {
+    &__wrap {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,131 @@
+@import 'src/style/variable.scss';
+
+.btn1,
+.btn2 {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: var(--grayold);
+  user-select: none;
+  font-family: var(--fontFamilyTwo);
+  font-size: 16px;
+  text-decoration: none;
+  text-align: center;
+
+  background: transparent;
+}
+
+.btn1,
+.btn3 {
+  width: 100%;
+  height: 100%;
+  margin-right: 10px;
+  letter-spacing: 1.5px;
+  font-weight: 600;
+  padding: 5px 20px 5px 0;
+  height: 30px;
+  outline: none;
+  border: none;
+  &:after {
+    content: '';
+    position: absolute;
+    width: 70%;
+    right: 0px;
+    bottom: -5px;
+    height: 100%;
+    background: var(--green3);
+    z-index: 0;
+    transition: all 0.2s linear 0s;
+  }
+  &__text {
+    z-index: 1;
+  }
+}
+
+.btn1:hover {
+  &:after {
+    height: 25%;
+  }
+}
+
+.btn3 {
+  &:after {
+    right: 10px;
+    width: 50%;
+  }
+
+  &__arrow {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 10px;
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+.btn2 {
+  width: auto;
+  font-weight: 500;
+  &:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    right: 0;
+    bottom: -3px;
+    height: 2px;
+    background: rgb(223, 223, 223);
+    z-index: 0;
+  }
+  &:before {
+    content: '';
+    position: absolute;
+    width: 0%;
+    left: 0;
+    bottom: -3px;
+    height: 2px;
+    background: var(--grayold);
+    z-index: 1;
+    transition: all 0.2s linear 0s;
+  }
+}
+
+.btn2:hover:before {
+  width: 100%;
+}
+
+@media screen and (max-width: $mw5 + px) {
+  .btn1,
+  .btn3 {
+    font-size: 14px;
+    padding: 5px 10px 5px 0;
+    letter-spacing: 2px;
+    &:after {
+      bottom: 0px;
+      width: 50%;
+    }
+  }
+
+  .btn2:after {
+    display: none;
+  }
+
+  .btn2:before {
+    width: 100%;
+    height: 1px;
+    bottom: -2px;
+  }
+
+  .btn2:after {
+    width: 100%;
+    height: 1px;
+    bottom: -2px;
+  }
+}
