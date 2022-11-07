@@ -1,44 +1,35 @@
-import {
-  InputField,
-  InputPassword,
-} from '../../../../UI/inputFiled/components/Input';
-import inputHOK from '../../../../UI/inputFiled/inputHOK';
+import { BodyUpProps } from '../../../../Types/interface';
+import { InputElem, InputPassword } from '../../../../UI/inputFiled/Input';
 
-export default function Body({ setValue, register, errors, getValues }) {
-  const Input = inputHOK(InputField);
-  const InputPass = inputHOK(InputPassword);
+export default function Body({ register, errors, getValues }: BodyUpProps) {
   return (
     <div className="singUp__body">
-      <Input
+      <InputElem
         req={true}
-        setValue={setValue}
         register={register}
         type="text"
         name="login"
         textFiled="Создайте свой логин"
         errors={errors}
       />
-      <Input
+      <InputElem
         req={true}
-        setValue={setValue}
         register={register}
         type="email"
         name="email"
         textFiled="Создайте свою почту"
         errors={errors}
       />
-      <Input
+      <InputElem
         req={true}
-        setValue={setValue}
         register={register}
         type="tel"
         name="number"
         textFiled="Номер телефона"
         errors={errors}
       />
-      <InputPass
+      <InputPassword
         req={true}
-        setValue={setValue}
         register={register}
         getValues={getValues}
         type="password"
@@ -46,9 +37,8 @@ export default function Body({ setValue, register, errors, getValues }) {
         textFiled="Пароль"
         errors={errors}
       />
-      <InputPass
+      <InputPassword
         req={true}
-        setValue={setValue}
         getValues={getValues}
         register={register}
         type="password"

@@ -4,7 +4,6 @@ import {
   UseFormGetValues,
   UseFormHandleSubmit,
   UseFormRegister,
-  UseFormSetValue,
 } from 'react-hook-form';
 
 export interface UserTypes {
@@ -28,9 +27,8 @@ export interface FiledValue {
 }
 
 export interface SignInputAll<TFieldValues extends FieldValues = FieldValues> {
-  register: UseFormRegister<ValueIn | TFieldValues>;
-  errors: FieldErrors<ValueIn | TFieldValues>;
-  setValue: UseFormSetValue<ValueIn | TFieldValues>;
+  register: UseFormRegister<SignData | TFieldValues>;
+  errors: FieldErrors<SignData | TFieldValues>;
 }
 
 export interface ISecondPageUp<TFieldValues extends FieldValues = FieldValues>
@@ -38,7 +36,9 @@ export interface ISecondPageUp<TFieldValues extends FieldValues = FieldValues>
   getValues?: UseFormGetValues<TFieldValues>;
 }
 
-export interface BodyFirstStep extends SignInputAll {
+export type BodyUpProps = ISecondPageUp;
+
+export interface BodyInProps extends SignInputAll {
   remember: boolean;
   setRemember: (remember: boolean) => void;
 }
@@ -48,39 +48,28 @@ export interface RememberProps {
   checked: boolean;
 }
 
-// New bloks input
-
-export interface HOKInputTypes<TFieldValues extends FieldValues = FieldValues>
-  extends BaseInputTypes {
-  errors: FieldErrors<ValueIn | TFieldValues>;
-  setValue: UseFormSetValue<ValueIn | TFieldValues>;
-}
-
-export interface InputFiledTypes extends BaseInputTypes {
-  err: any;
-  change: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  data?: string;
-  valid: (item: string) => any;
-}
-
-export interface BaseInputTypes<
+export interface InputFiledTypes<
   TFieldValues extends FieldValues = FieldValues
 > {
+  errors: FieldErrors<SignData | TFieldValues>;
   type: string;
   textFiled?: string;
-  register: UseFormRegister<ValueIn | TFieldValues>;
-  tel?: boolean | false;
-  code?: string;
+  register: UseFormRegister<SignData | TFieldValues>;
   req?: boolean;
   name: string;
-  signin?: boolean;
   getValues?: UseFormGetValues<TFieldValues>;
   twopass?: boolean;
 }
 
 // Forms =================
 
-export interface ValueIn {
+export interface SignData {
   password: string;
   email: string;
+}
+
+export interface SignUpData extends SignData {
+  login: string;
+  number: string;
+  passTwo: string;
 }

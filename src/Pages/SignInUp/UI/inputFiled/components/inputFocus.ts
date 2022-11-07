@@ -26,17 +26,11 @@ export const focusinput = (e: React.MouseEvent<HTMLElement>) => {
   }
 };
 
-export const renderInput = (
-  setData: React.Dispatch<React.SetStateAction<string>>,
-  data: string,
-  name: string
-) => {
+export const renderInput = () => {
   const arr = Array.from(document.querySelectorAll('.inputFiled__text'));
   for (const item of arr) {
-    const input = item.nextElementSibling as HTMLInputElement;
     if ((item.nextElementSibling as HTMLInputElement)?.value) {
       item?.classList.add('focus');
-      if (data == '' && name == input?.name) setData(() => input?.value);
     }
   }
 };

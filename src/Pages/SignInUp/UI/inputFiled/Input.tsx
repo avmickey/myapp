@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
-import '../style/inputFiled.scss';
-import { ReactComponent as Eye } from '../../../../../img/icons/eye.svg';
-import { ReactComponent as Close } from '../../../../../img/icons/closeEye.svg';
-import { InputFiledTypes } from '../../../Types/interface';
-import InputErrFoot from './InputErrFoot';
-import { focus, focusinput } from './inputFocus';
+import React, { useState, useEffect } from 'react';
+import './style/inputFiled.scss';
+import { ReactComponent as Eye } from '../../../../img/icons/eye.svg';
+import { ReactComponent as Close } from '../../../../img/icons/closeEye.svg';
+import { InputFiledTypes } from '../../Types/interface';
+import InputErrFoot from './components/InputErrFoot';
+import { focus, focusinput, renderInput } from './components/inputFocus';
+import { Location, useLocation } from 'react-router-dom';
+import { valid } from './components/validate';
 
 export const InputPassword: React.FC<InputFiledTypes> = ({
   type,
@@ -12,20 +14,19 @@ export const InputPassword: React.FC<InputFiledTypes> = ({
   register,
   req,
   name,
-  signin,
   getValues,
-  data,
-  err,
-  change,
-  valid,
+  errors,
   twopass,
 }) => {
   const [passSea, setPassSea] = useState(false);
+  const { pathname }: Location = useLocation();
+  const err: string = errors[name] && (errors[name]?.message || 'Error');
 
-  const changeEye = () => {
-    setPassSea(() => !passSea);
-  };
-  const obj = !signin
+  useEffect(() => {
+    renderInput();
+  }, []);
+
+  const сoincidence = pathname.includes('registration')
     ? {
         pattern: !twopass ? valid(type) : undefined,
         validate: twopass
@@ -44,15 +45,16 @@ export const InputPassword: React.FC<InputFiledTypes> = ({
           <input
             {...register(name, {
               required: req ? 'Поле должно быть заполнено' : false,
-              ...obj,
+              ...сoincidence,
             })}
             onFocus={focus}
             onBlur={focus}
-            onChange={change}
-            value={data}
             type={passSea ? 'text' : type}
           />
-          <div onClick={changeEye} className="inputFiled__eye">
+          <div
+            onClick={() => setPassSea(() => !passSea)}
+            className="inputFiled__eye"
+          >
             {passSea ? <Close /> : <Eye />}
           </div>
         </div>
@@ -62,19 +64,20 @@ export const InputPassword: React.FC<InputFiledTypes> = ({
   );
 };
 
-export function InputField({
+export const InputElem: React.FC<InputFiledTypes> = ({
   type,
   textFiled,
   register,
-  tel,
-  code,
   req,
   name,
-  err,
-  change,
-  data,
-  valid,
-}: InputFiledTypes) {
+  errors,
+}) => {
+  const err: string = errors[name] && (errors[name]?.message || 'Error');
+
+  useEffect(() => {
+    renderInput();
+  }, []);
+
   return (
     <div className="inputFiled">
       <div
@@ -84,13 +87,7 @@ export function InputField({
         }
       >
         <div className="inputFiled__block">
-          <div
-            className={
-              tel ? 'inputFiled__text old tel' : 'inputFiled__text old all'
-            }
-          >
-            {tel ? code : textFiled}
-          </div>
+          <div className="inputFiled__text old all">{textFiled}</div>
           <input
             {...register(name, {
               required: req ? 'Поле должно быть заполнено' : false,
@@ -98,8 +95,6 @@ export function InputField({
             })}
             onFocus={focus}
             onBlur={focus}
-            onChange={change}
-            value={data}
             type={type}
           />
         </div>
@@ -107,4 +102,4 @@ export function InputField({
       <InputErrFoot err={err} />
     </div>
   );
-}
+};

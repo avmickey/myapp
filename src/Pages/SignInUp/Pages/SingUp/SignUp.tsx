@@ -16,18 +16,13 @@ export default function SignUp() {
     register,
     formState: { errors },
     handleSubmit,
-    setValue,
     getValues,
     setError,
-  } = useForm<UserTypes>({
-    mode: 'onBlur',
-  });
+  } = useForm<UserTypes>({ mode: 'onSubmit' });
   const router = useNavigate();
   const { user } = useContext(Context);
   const [isLoading, fetching] = useLoading(async (data) => {
     const response = await registration(data);
-    console.log(response);
-
     if (response.message == 'Ok') {
       user.setIsAuth = true;
       user.setUser = jwtDecode(response.token);
@@ -44,12 +39,7 @@ export default function SignUp() {
       handleSubmit={handleSubmit}
       btn="Создать"
     >
-      <Body
-        register={register}
-        errors={errors}
-        setValue={setValue}
-        getValues={getValues}
-      />
+      <Body register={register} errors={errors} getValues={getValues} />
     </SignBody>
   );
 }

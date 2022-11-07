@@ -4,7 +4,7 @@ export default function InputErrFoot({ err }) {
   return (
     <div className="inputFiled__footer">
       <div className="inputFiled__error">
-        <P size="m">{err}</P>
+        <P size="l">{err}</P>
       </div>
     </div>
   );

@@ -18,13 +18,13 @@ export const SignIn: React.FC = observer(() => {
     formState: { errors },
     handleSubmit,
     setError,
-    setValue,
-  } = useForm({ mode: 'onChange' });
+  } = useForm({ mode: 'onSubmit' });
   const router: NavigateFunction = useNavigate();
   const [remember, setRemember] = useState(true);
   const { user } = useContext(Context);
   const [isLoading, fetching] = useLoading(async (data) => {
     const response = await login(remember, data);
+    console.log(response);
     if (response.message == 'Ok') {
       user.setIsAuth = true;
       user.setUser = jwtDecode(response.token);
@@ -46,7 +46,6 @@ export const SignIn: React.FC = observer(() => {
         errors={errors}
         remember={remember}
         setRemember={setRemember}
-        setValue={setValue}
       />
     </SignBody>
   );

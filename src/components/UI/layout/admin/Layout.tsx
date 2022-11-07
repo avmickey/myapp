@@ -1,9 +1,9 @@
-import { AdminLayoutProps } from './AdminLayout.conf';
+import { LayoutProps } from './LayoutProps.config';
 import { FunctionComponent } from 'react';
-import './AdminLayout.scss';
+import './Layout.scss';
 import { Footer, Header } from '../../..';
 
-export const AdminLayout = ({ children }: AdminLayoutProps): JSX.Element => {
+export const Layout = ({ children }: LayoutProps): JSX.Element => {
   return (
     <div className="layoutWrapper">
       <Header />
@@ -13,14 +13,14 @@ export const AdminLayout = ({ children }: AdminLayoutProps): JSX.Element => {
   );
 };
 
-export const withAdminLayout = <T extends Record<string, unknown>>(
+export const layoutHOK = <T extends Record<string, unknown>>(
   Component: FunctionComponent<T>
 ) => {
-  return function withAdminLayoutComponent(props: T): JSX.Element {
+  return function Wraper(props: T): JSX.Element {
     return (
-      <AdminLayout>
+      <Layout>
         <Component {...props} />
-      </AdminLayout>
+      </Layout>
     );
   };
 };

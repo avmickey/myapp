@@ -70,6 +70,61 @@
   &__wrap {
     display: flex;
     width: 100%;
+    position: relative;
+    user-select: none;
+  }
+  &__user {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  &__login {
+    padding-right: 10px;
+  }
+  &__icon {
+    width: 15px;
+    height: 15px;
+  }
+  svg {
+    width: 100%;
+    height: 100%;
+    fill: var(--oldgrey);
+  }
+}
+
+.menublock {
+  position: absolute;
+  width: 120px;
+  top: 40px;
+  left: -50%;
+  background: rgb(246, 246, 246);
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.266);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.1s linear 0s;
+  ul {
+    display: flex;
+    justify-content: center;
+  }
+  li {
+    cursor: pointer;
+    padding: 5px 10px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+    &:hover {
+      background: var(--green3);
+    }
+  }
+}
+
+.accoutmenu {
+  &__wrap.add {
+    .menublock {
+      visibility: visible;
+      opacity: 1;
+    }
   }
 }
 
@@ -118,5 +173,10 @@
     &__text {
       font-size: 25px;
     }
+  }
+
+  .menublock {
+    position: absolute;
+    width: 100px;
   }
 }

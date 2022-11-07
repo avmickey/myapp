@@ -7,7 +7,7 @@ export interface ButtonProps
   > {
   children: ReactNode;
   valid?: boolean;
-  path?: any;
-  name: string;
+  path?: string;
+  name: 'btn1' | 'btn2';
   arrow?: boolean;
 }

@@ -2,14 +2,12 @@
   "name": "npa",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://avmickey.github.io/my-app/",
   "scripts": {
     "start": "react-scripts start",
     "predeploy": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "stylelint": "stylelint \"**/*.css\" --fix",
-
     "deploy": "gh-pages -d build"
   },
   "dependencies": {

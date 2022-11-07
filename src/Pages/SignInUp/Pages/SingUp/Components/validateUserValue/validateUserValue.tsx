@@ -9,21 +9,25 @@ export const validateUserValue = (
     if (response.message.includes('email')) {
       setError('email', {
         type: 'custom',
-        message: 'Данный email уже существует',
+        message: response.message,
       });
     } else if (response.message.includes('номер')) {
       setError('number', {
         type: 'custom',
-        message: 'Данный номер уже существует',
+        message: response.message,
       });
     } else if (response.message.includes('логин')) {
       setError('login', {
         type: 'custom',
-        message: 'Данный логин уже существует',
+        message: response.message,
       });
     }
   } else if (login) {
+    console.log(response.message.includes('email'));
+
     if (response.message.includes('email')) {
+      console.log(2);
+
       setError('email', {
         type: 'custom',
         message: 'почта или номер не найден',

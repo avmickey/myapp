@@ -15,7 +15,9 @@ const SignBody: React.FC<BodySignTypes> = ({
   children,
 }) => {
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
-    await fetching(data);
+    console.log(2);
+
+    fetching(data);
   };
 
   const router: NavigateFunction = useNavigate();
@@ -31,7 +33,7 @@ const SignBody: React.FC<BodySignTypes> = ({
           <div className="signbody__arrow">
             <Arrow />
           </div>
-          <Button name="btn2" valid={false}>
+          <Button name="btn2" valid={true}>
             <div className="signbody__text">
               <P size="l">Назад</P>
             </div>
