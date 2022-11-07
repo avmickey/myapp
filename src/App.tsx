@@ -11,8 +11,6 @@ import Routers from './components/UX/Routes/Routes';
 const App: React.FC = observer((): JSX.Element => {
   const { user } = useContext<React.ContextType<typeof Context>>(Context);
   const [, fetching] = useLoading(async () => {
-    const token = localStorage.getItem('token');
-    console.log(token);
     check().then(
       (resolve) => {
         if (resolve) {

@@ -37,10 +37,8 @@ export const check = async (): Promise<any> => {
   try {
     const { data } = await $authHost.get('api/user/check');
     localStorage.setItem('token', JSON.stringify(data.token));
-
     return data;
   } catch (err) {
-    console.log(err);
     if (err instanceof AxiosError) {
       throw err?.response?.data;
     }

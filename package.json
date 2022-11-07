@@ -4,10 +4,11 @@
   "private": true,
   "scripts": {
     "start": "react-scripts start",
-    "predeploy": "react-scripts build",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "stylelint": "stylelint \"**/*.css\" --fix",
+	 "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
   "dependencies": {
