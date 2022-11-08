@@ -1,13 +1,14 @@
-import { useLocation } from 'react-router-dom';
+import { Location, useLocation } from 'react-router-dom';
 import SignUp from '../../Pages/SingUp/SignUp';
 import './style/Login.scss';
 import { SignIn } from '../../Pages/SignIn/SignIn';
 import { links } from '../../../../components/UX/Routes/links';
 import HaveAccount from './Components/HaveAccount';
 
-export default function Login() {
-  const router = useLocation();
-  const isLogin = router.pathname.includes(links.LOGIN_ROUTER);
+const Login: React.FC = () => {
+  const { pathname }: Location = useLocation();
+  const isLogin = pathname.includes(links.LOGIN_ROUTER);
+  console.log(pathname);
 
   return (
     <>
@@ -24,4 +25,6 @@ export default function Login() {
       </div>
     </>
   );
-}
+};
+
+export default Login;

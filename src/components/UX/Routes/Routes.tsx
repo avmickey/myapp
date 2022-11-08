@@ -9,7 +9,10 @@ export default function Routers() {
     <Routes>
       <Route element={<Login />} path={links.LOGIN_ROUTER} />
       <Route element={<Login />} path={links.REGISTRATION_ROUTER} />
-      <Route element={<Navigate to="/" replace />} path="*" />
+      <Route
+        element={<Navigate to={`${process.env.PUBLIC_URL}/`} replace />}
+        path="*"
+      />
       {publicRoutes.map((item) => {
         const El = layoutHOK(item.element);
         return <Route key={item.path} element={<El />} path={item.path} />;

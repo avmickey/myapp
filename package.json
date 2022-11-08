@@ -2,6 +2,7 @@
   "name": "npa",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://avmickey.github.io/myapp/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
