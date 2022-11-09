@@ -8,7 +8,6 @@ import HaveAccount from './Components/HaveAccount';
 const Login: React.FC = () => {
   const { pathname }: Location = useLocation();
   const isLogin = pathname.includes(links.LOGIN_ROUTER);
-  console.log(pathname);
 
   return (
     <>
