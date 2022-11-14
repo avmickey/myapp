@@ -9,8 +9,9 @@ export const registration = async (arg: FieldValues): Promise<any> => {
     });
     localStorage.setItem('token', JSON.stringify(data.token));
     return data;
-  } catch (e) {
-    if (e instanceof AxiosError) return e.response?.data;
+  } catch (err) {
+    if (err instanceof AxiosError) return err.response?.data;
+    else return err;
   }
 };
 
@@ -29,7 +30,7 @@ export const login = async (
   } catch (err) {
     if (err instanceof AxiosError) {
       return err.response?.data;
-    }
+    } else return err;
   }
 };
 
@@ -41,6 +42,6 @@ export const check = async (): Promise<any> => {
   } catch (err) {
     if (err instanceof AxiosError) {
       throw err?.response?.data;
-    }
+    } else return err;
   }
 };

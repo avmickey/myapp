@@ -21,6 +21,8 @@ export const validateUserValue = (
         type: 'custom',
         message: response.message,
       });
+    } else {
+      alert(response.message);
     }
   } else if (login) {
     console.log(response.message.includes('email'));
@@ -37,6 +39,8 @@ export const validateUserValue = (
         type: 'custom',
         message: 'неверный пароль',
       });
+    } else {
+      alert(response.message);
     }
   }
 };
